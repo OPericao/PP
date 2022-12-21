@@ -19,6 +19,10 @@ let rec concat = function
 	[] -> []
 	|h::t -> h @ concat t;;
 
+let rec fold_left op e = function
+	[] -> e
+	|h::t -> fold_left op (op e h) t;;
+
 let lmax = function
 	[] -> raise (Invalid_argument "lmax")
 	|h::t -> fold_left max h t;;
@@ -39,10 +43,6 @@ let rec leaves = function
 let rec mirror = function
     Gt (r,[]) -> Gt(r,[])
    |Gt (r,l) -> Gt(r, map mirror (rev l));;
-
-(*let rec postorder = function
-    Gt (r,[]) -> [r]
-  | Gt (r, h::t) -> (postorder h) @ (postorder (Gt (r,t)));;*)
 
 let rec postorder = function
 	Gt (r,[]) -> r::[]
