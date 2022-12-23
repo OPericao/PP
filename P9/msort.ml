@@ -46,6 +46,8 @@ let rec msort2 p l = match l with
 		[] | _::[] -> l
 		|_ -> let l1, l2 = divide' l in merge' p (msort2 p l1, msort2 p l2);;
 
+(*Para una lista de 100_000 elementos aleatorios, tanto msort1 como msort2 tardan practicamente lo mismo, 0.147378 y 0.147943 respectivamente.
+  Ambos tiempos son menores que el de qsort2, que tarda 0.176721*)
 		
 		
 		
